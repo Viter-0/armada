@@ -1,0 +1,80 @@
+{   
+    "$defs": {
+        "_comment": "Space in expressions is necessary (e.g., CONTAINS includes a trailing space)",
+        "expressions": {
+            "eq": "CONTAINS ",
+            "neq": "NOT_CONTAINS "
+        }
+    },
+    "query": {
+        "source_ip": {
+            "field": "com.vmware.nsxt:vmw_nsxt_firewall_src",
+            "expressions": {"$ref": "#/$defs/expressions"}
+        },
+        "destination_ip": {
+            "field": "com.vmware.nsxt:vmw_nsxt_firewall_dst",
+            "expressions": {"$ref": "#/$defs/expressions"}
+        },
+        "firewall_rule_id": {
+            "field": "com.vmware.nsxt:vmw_nsxt_firewall_ruleid",
+            "expressions": {"$ref": "#/$defs/expressions"}
+        },
+        "port": {
+            "field": "com.vmware.nsxt:vmw_nsxt_firewall_dst_port",
+            "expressions": {"$ref": "#/$defs/expressions"}
+        },
+        "action": {
+            "field": "com.vmware.nsxt:vmw_nsxt_firewall_action",
+            "expressions": {"$ref": "#/$defs/expressions"}
+        }
+    },
+    "result": {
+        "timestamp": {
+            "field": "timestamp",
+            "parser": "_result_parser_timestamp"
+        },
+        "com.vmware.nsxt:vmw_nsxt_firewall_dst": {
+            "field": "destination_ip"
+        },
+        "com.vmware.nsxt:vmw_nsxt_firewall_src": {
+            "field": "source_ip"
+        },
+        "com.vmware.nsxt:vmw_nsxt_firewall_protocol": {
+            "field": "protocol"
+        },
+        "com.vmware.nsxt:vmw_nsxt_firewall_dst_port": {
+            "field": "port",
+            "parser": "_result_parser_port"
+        },
+        "com.vmware.nsxt:vmw_nsxt_firewall_action": {
+            "field": "action",
+            "parser": "_result_parser_action"
+        },
+        "com.vmware.nsxt:vmw_nsxt_firewall_ruleid": {
+            "field": "firewall_rule_id"
+        },
+        "com.vmware.nsxt:vmw_nsxt_firewall_reason": {
+            "field": "session_message"
+        },
+        "com.vmware.nsxt:vmw_nsxt_firewall_client_to_server_bytes": {
+            "field": "client_to_server_bytes"
+        },
+        "com.vmware.nsxt:vmw_nsxt_firewall_server_to_client_bytes": {
+            "field": "server_to_client_bytes"
+        },
+        "firewall_rule": {
+            "_comment": "The API does not provide a 'firewall_rule' field directly. This field is derived from other attributes using the specified parser",
+            "field": "firewall_rule",
+            "parser": "_result_parser_firewall_rule"
+        },
+        "data_source": {
+            "_comment": "The API does not provide a 'data_source' field directly. This field is derived from other attributes using the specified parser",
+            "field": "data_source",
+            "parser": "_result_parser_datasource"
+        },
+        "hostname": {
+            "field": "log_source",
+            "parser": "_result_parser_log_source"
+        }
+    }
+}

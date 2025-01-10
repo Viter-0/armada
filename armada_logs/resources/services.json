@@ -1,0 +1,689 @@
+{
+  "version": 1,
+  "services": [
+    {
+      "port": "7",
+      "name": "Echo",
+      "protocol": "TCP, UDP",
+      "description": "Echo service"
+    },
+    {
+      "port": "20",
+      "name": "FTP-data",
+      "protocol": "TCP",
+      "description": "File Transfer Protocol data transfer"
+    },
+    {
+      "port": "21",
+      "name": "FTP",
+      "protocol": "TCP, UDP",
+      "description": "File Transfer Protocol (FTP) control connection"
+    },
+    {
+      "port": "22",
+      "name": "SSH-SCP",
+      "protocol": "TCP, UDP",
+      "description": "Secure Shell, secure logins, file transfers (scp, sftp), and port forwarding"
+    },
+    {
+      "port": "23",
+      "name": "Telnet",
+      "protocol": "TCP",
+      "description": "Telnet protocol—unencrypted text communications"
+    },
+    {
+      "port": "25",
+      "name": "SMTP",
+      "protocol": "TCP",
+      "description": "Simple Mail Transfer Protocol, used for email routing between mail servers"
+    },
+    {
+      "port": "49",
+      "name": "TACACS",
+      "protocol": "UDP",
+      "description": "Terminal Access Controller Access-Control System, provides remote authentication and related services for network access"
+    },
+    {
+      "port": "53",
+      "name": "DNS",
+      "protocol": "TCP, UDP",
+      "description": "Domain Name System name resolver"
+    },
+    {
+      "port": "67",
+      "name": "DHCP/BOOTP",
+      "protocol": "UDP",
+      "description": "Dynamic Host Configuration Protocol and its predecessor Bootstrap Protocol Server; server port"
+    },
+    {
+      "port": "68",
+      "name": "DHCP/BOOTP",
+      "protocol": "UDP",
+      "description": "Dynamic Host Configuration Protocol and its predecessor Bootstrap Protocol Server; client port"
+    },
+    {
+      "port": "69",
+      "name": "TFTP",
+      "protocol": "UDP",
+      "description": "Trivial File Transfer Protocol"
+    },
+    {
+      "port": "80",
+      "name": "HTTP",
+      "protocol": "TCP, UDP",
+      "description": "Hypertext Transfer Protocol (HTTP) uses TCP in versions 1.x and 2. HTTP/3 uses QUIC, a protocol on top of UDP"
+    },
+    {
+      "port": "88",
+      "name": "Kerberos",
+      "protocol": "TCP, UDP",
+      "description": "Network authentication system"
+    },
+    {
+      "port": "102",
+      "name": "Iso-tsap",
+      "protocol": "TCP",
+      "description": "ISO Transport Service Access Point (TSAP) Class 0 protocol"
+    },
+    {
+      "port": "110",
+      "name": "POP3",
+      "protocol": "TCP",
+      "description": "Post Office Protocol, version 3 (POP3)"
+    },
+    {
+      "port": "123",
+      "name": "NTP",
+      "protocol": "UDP",
+      "description": "Network Time Protocol"
+    },
+    {
+      "port": "135",
+      "name": "Microsoft EPMAP",
+      "protocol": "TCP, UDP",
+      "description": "Microsoft EPMAP (End Point Mapper), also known as DCE/RPC Locator service, used to remotely manage services including DHCP server, DNS server, and WINS. Also used by DCOM"
+    },
+    {
+      "port": "137",
+      "name": "NetBIOS-ns",
+      "protocol": "TCP, UDP",
+      "description": "NetBIOS Name Service, used for name registration and resolution"
+    },
+    {
+      "port": "138",
+      "name": "NetBIOS-dgm",
+      "protocol": "TCP, UDP",
+      "description": "NetBIOS Datagram Service, used for providing access to shared resources"
+    },
+    {
+      "port": "139",
+      "name": "NetBIOS-ssn",
+      "protocol": "TCP, UDP",
+      "description": "NetBIOS Session Service"
+    },
+    {
+      "port": "143",
+      "name": "IMAP4",
+      "protocol": "TCP, UDP",
+      "description": "Internet Message Access Protocol (IMAP), management of electronic mail messages on a server"
+    },
+    {
+      "port": "161",
+      "name": "SNMP-agents (unencrypted)",
+      "protocol": "UDP",
+      "description": "Simple Network Management Protocol; agents communicate on this port"
+    },
+    {
+      "port": "162",
+      "name": "SNMP-trap (unencrypted)",
+      "protocol": "UDP",
+      "description": "Simple Network Management Protocol; listens for asynchronous traps"
+    },
+    {
+      "port": "177",
+      "name": "XDMCP",
+      "protocol": "UDP",
+      "description": "X Display Manager Control Protocol"
+    },
+    {
+      "port": "179",
+      "name": "BGP",
+      "protocol": "TCP",
+      "description": "Border Gateway Protocol"
+    },
+    {
+      "port": "201",
+      "name": "AppleTalk",
+      "protocol": "TCP, UDP",
+      "description": "AppleTalk Routing Maintenance. Trojan horses and computer viruses have used UDP port 201"
+    },
+    {
+      "port": "264",
+      "name": "BGMP",
+      "protocol": "TCP, UDP",
+      "description": "Border Gateway Multicast Protocol"
+    },
+    {
+      "port": "318",
+      "name": "TSP",
+      "protocol": "TCP, UDP",
+      "description": "Time Stamp Protocol"
+    },
+    {
+      "port": "381",
+      "name": "HP Openview",
+      "protocol": "TCP, UDP",
+      "description": "HP data alarm manager"
+    },
+    {
+      "port": "383",
+      "name": "HP Openview",
+      "protocol": "TCP, UDP",
+      "description": "HP performance data collector"
+    },
+    {
+      "port": "389",
+      "name": "LDAP",
+      "protocol": "TCP, UDP",
+      "description": "Lightweight Directory Access Protocol"
+    },
+    {
+      "port": "443",
+      "name": "HTTP over SSL",
+      "protocol": "TCP, UDP",
+      "description": "Hypertext Transfer Protocol Secure (HTTPS) uses TCP in versions 1.x and 2. HTTP/3 uses QUIC, a protocol on top of UDP"
+    },
+    {
+      "port": "445",
+      "name": "Microsoft DS SMB",
+      "protocol": "TCP, UDP",
+      "description": "Microsoft Directory Services: TCP for Active Directory, Windows shares; UDP for Server Message Block (SMB) file-sharing"
+    },
+    {
+      "port": "464",
+      "name": "Kerberos",
+      "protocol": "TCP, UDP",
+      "description": "Kerberos Change/Set password"
+    },
+    {
+      "port": "465",
+      "name": "SMTP over TLS/SSL, SSM",
+      "protocol": "TCP",
+      "description": "Authenticated SMTP over TLS/SSL (SMTPS), URL Rendezvous Directory for SSM (Cisco protocol)"
+    },
+    {
+      "port": "500",
+      "name": "IPSec / ISAKMP / IKE",
+      "protocol": "UDP",
+      "description": "Internet Protocol Security / Internet Security Association and Key Management Protocol / Internet Key Exchange"
+    },
+    {
+      "port": "514",
+      "name": "syslog",
+      "protocol": "UDP",
+      "description": "Syslog Protocol, for collecting and organizing all log files sent from various devices on a network"
+    },
+    {
+      "port": "515",
+      "name": "LPD/LPR",
+      "protocol": "TCP",
+      "description": "Line Printer Daemon protocol, or Line Printer Remote protocol"
+    },
+    {
+      "port": "520",
+      "name": "RIP",
+      "protocol": "UDP",
+      "description": "Routing Information Protocol, used to find the optimal path between source and destination networks"
+    },
+    {
+      "port": "521",
+      "name": "RIPng (IPv6)",
+      "protocol": "UDP",
+      "description": "Routing Information Protocol next generation, the IPv6-compatible version of RIP"
+    },
+    {
+      "port": "540",
+      "name": "UUCP",
+      "protocol": "TCP",
+      "description": "Unix-to-Unix Copy Protocol"
+    },
+    {
+      "port": "546",
+      "name": "DHCPv6",
+      "protocol": "TCP, UDP",
+      "description": "Dynamic Host Configuration Protocol version 6. DHCPv6 Clients listen for DHCPv6 messages on UDP port 546"
+    },
+    {
+      "port": "547",
+      "name": "DHCPv6",
+      "protocol": "TCP, UDP",
+      "description": "DHCPv6 Servers and DHCPv6 Relay Agents listen for DHCPv6 messages on UDP port 547"
+    },
+    {
+      "port": "548",
+      "name": "AFP",
+      "protocol": "TCP",
+      "description": "Apple Filing Protocol"
+    },
+    {
+      "port": "554",
+      "name": "RTSP",
+      "protocol": "TCP, UDP",
+      "description": "Real Time Streaming Protocol"
+    },
+    {
+      "port": "563",
+      "name": "NNTP over TLS/SSL",
+      "protocol": "TCP, UDP",
+      "description": "Network News Transfer Protocol with encryption and verification"
+    },
+    {
+      "port": "587",
+      "name": "SMTP",
+      "protocol": "TCP",
+      "description": "Email message submission"
+    },
+    {
+      "port": "593",
+      "name": "Microsoft DCOM",
+      "protocol": "TCP, UDP",
+      "description": "HTTP RPC Ep Map, Remote Procedure Call over Hypertext Transfer Protocol, often used by Distributed Component Object Model services and Microsoft Exchange Server"
+    },
+    {
+      "port": "636",
+      "name": "LDAP over TLS/SSL",
+      "protocol": "TCP, UDP",
+      "description": "Lightweight Directory Access Protocol over TLS/SSL"
+    },
+    {
+      "port": "691",
+      "name": "MS Exchange",
+      "protocol": "TCP",
+      "description": "MS Exchange Routing"
+    },
+    {
+      "port": "860",
+      "name": "iSCSI",
+      "protocol": "TCP",
+      "description": "Internet Small Computer Systems Interface"
+    },
+    {
+      "port": "873",
+      "name": "rsync",
+      "protocol": "TCP",
+      "description": "The rsync file synchronization protocol efficiently transfers and synchronizes files between devices and networked computers"
+    },
+    {
+      "port": "902",
+      "name": "VMware Server",
+      "protocol": "TCP, UDP",
+      "description": "VMware ESXi"
+    },
+    {
+      "port": "989",
+      "name": "FTP over SSL",
+      "protocol": "TCP, UDP",
+      "description": "FTPS Protocol (data), FTP over TLS/SSL"
+    },
+    {
+      "port": "990",
+      "name": "FTP over SSL",
+      "protocol": "TCP, UDP",
+      "description": "FTPS Protocol (control), FTP over TLS/SSL"
+    },
+    {
+      "port": "993",
+      "name": "IMAP4 over SSL",
+      "protocol": "TCP",
+      "description": "Internet Message Access Protocol over TLS/SSL (IMAPS)"
+    },
+    {
+      "port": "995",
+      "name": "POP3 over SSL",
+      "protocol": "TCP, UDP",
+      "description": "Post Office Protocol 3 over TLS/SSL"
+    },
+    {
+      "port": "1194",
+      "name": "OpenVPN",
+      "protocol": "TCP, UDP",
+      "description": "OpenVPN"
+    },
+    {
+      "port": "1241",
+      "name": "Nessus",
+      "protocol": "TCP, UDP",
+      "description": "Nessus Security Scanner"
+    },
+    {
+      "port": "1311",
+      "name": "Dell OpenManage",
+      "protocol": "TCP",
+      "description": "Dell EMC OpenManage Server Administrator Web GUI"
+    },
+    {
+      "port": "1337",
+      "name": "WASTE",
+      "protocol": "TCP, UDP",
+      "description": "WASTE Encrypted File Sharing Program"
+    },
+    {
+      "port": "1589",
+      "name": "Cisco VQP",
+      "protocol": "TCP, UDP",
+      "description": "Cisco VLAN Query Protocol (VQP)"
+    },
+    {
+      "port": "1701",
+      "name": "L2TP VPN",
+      "protocol": "TCP",
+      "description": "Layer Two Tunneling Protocol Virtual Private Networking"
+    },
+    {
+      "port": "1720",
+      "name": "H.323",
+      "protocol": "TCP",
+      "description": "H.323 Call Control Signaling, a VoIP call control protocol"
+    },
+    {
+      "port": "1723",
+      "name": "Microsoft PPTP",
+      "protocol": "TCP, UDP",
+      "description": "Point-to-Point Tunneling Protocol Virtual Private Networking"
+    },
+    {
+      "port": "1725",
+      "name": "Steam",
+      "protocol": "UDP",
+      "description": "Valve Steam Client uses port 1725"
+    },
+    {
+      "port": "1812",
+      "name": "RADIUS",
+      "protocol": "UDP",
+      "description": "RADIUS server authentication and authorization"
+    },
+    {
+      "port": "1813",
+      "name": "RADIUS",
+      "protocol": "UDP",
+      "description": "RADIUS server accounting"
+    },
+    {
+      "port": "1900",
+      "name": "UPnP",
+      "protocol": "UDP",
+      "description": "Universal Plug and Play"
+    },
+    {
+      "port": "1985",
+      "name": "Cisco HSRP",
+      "protocol": "UDP",
+      "description": "Hot Standby Router Protocol"
+    },
+    {
+      "port": "2000",
+      "name": "Cisco SCCP",
+      "protocol": "TCP",
+      "description": "Skinny Client Control Protocol"
+    },
+    {
+      "port": "2002",
+      "name": "Cisco ACS",
+      "protocol": "TCP",
+      "description": "Access Control Server"
+    },
+    {
+      "port": "2049",
+      "name": "NFS",
+      "protocol": "UDP",
+      "description": "Network File System"
+    },
+    {
+      "port": "2082",
+      "name": "cPanel",
+      "protocol": "TCP, UDP",
+      "description": "cPanel default"
+    },
+    {
+      "port": "2083",
+      "name": "radsec, cPanel",
+      "protocol": "TCP, UDP",
+      "description": "Secure RADIUS Service (radsec), cPanel default SSL"
+    },
+    {
+      "port": "2222",
+      "name": "DirectAdmin",
+      "protocol": "TCP",
+      "description": "Graphical web hosting control panel"
+    },
+    {
+      "port": "2483",
+      "name": "Oracle DB",
+      "protocol": "TCP, UDP",
+      "description": "Oracle database listening for insecure client connections to the listener, replaces port 1521"
+    },
+    {
+      "port": "2484",
+      "name": "Oracle DB",
+      "protocol": "TCP, UDP",
+      "description": "Oracle database listening for SSL client connections to the listener"
+    },
+    {
+      "port": "2967",
+      "name": "Symantec AV",
+      "protocol": "TCP, UDP",
+      "description": "Symantec System Center agent (SSC-AGENT)"
+    },
+    {
+      "port": "3306",
+      "name": "MySQL",
+      "protocol": "TCP",
+      "description": "MySQL database system"
+    },
+    {
+      "port": "3389",
+      "name": "RDP",
+      "protocol": "TCP",
+      "description": "Windows Remote Desktop Protocol (Microsoft Terminal Server)"
+    },
+    {
+      "port": "3690",
+      "name": "SVN",
+      "protocol": "TCP, UDP",
+      "description": "Apache Subversion, a version control system"
+    },
+    {
+      "port": "4500",
+      "name": "IPSec NAT Traversal",
+      "protocol": "UDP",
+      "description": "Internet Protocol Security Network Address Translation (NAT) Traversal"
+    },
+    {
+      "port": "4664",
+      "name": "Google Desktop",
+      "protocol": "TCP, UDP",
+      "description": "Google Desktop Search"
+    },
+    {
+      "port": "5000",
+      "name": "UPnP",
+      "protocol": "TCP",
+      "description": "Universal Plug and Play"
+    },
+    {
+      "port": "5001",
+      "name": "iperf",
+      "protocol": "TCP",
+      "description": "Tool for measuring TCP and UDP bandwidth performance"
+    },
+    {
+      "port": "5004",
+      "name": "RTP, RTSP",
+      "protocol": "UDP",
+      "description": "Real-time Protocol, Real Time Streaming Protocol"
+    },
+    {
+      "port": "5005",
+      "name": "RTP, RTSP",
+      "protocol": "UDP",
+      "description": "Real-time Protocol, Real Time Streaming Protocol"
+    },
+    {
+      "port": "5060",
+      "name": "SIP",
+      "protocol": "TCP, UDP",
+      "description": "Session Initiation Protocol"
+    },
+    {
+      "port": "5061",
+      "name": "SIP-TLS",
+      "protocol": "TCP",
+      "description": "Session Initiation Protocol over TLS"
+    },
+    {
+      "port": "5222",
+      "name": "XMPP",
+      "protocol": "TCP, UDP",
+      "description": "Extensible Messaging and Presence Protocol Client Connection; also used in Google Talk, Jabber, Apple iChat, WhatsApp, etc."
+    },
+    {
+      "port": "5223",
+      "name": "XMPP",
+      "protocol": "TCP, UDP",
+      "description": "Extensible Messaging and Presence Protocol Client Connection; also used in Google Talk, Jabber, Apple iChat, WhatsApp, etc."
+    },
+    {
+      "port": "5353",
+      "name": "MDNS",
+      "protocol": "UDP",
+      "description": "Multicast DNS"
+    },
+    {
+      "port": "5432",
+      "name": "PostgreSQL",
+      "protocol": "TCP",
+      "description": "PostgreSQL database system"
+    },
+    {
+      "port": "5800",
+      "name": "VNC over HTTP",
+      "protocol": "TCP",
+      "description": "Virtual Network Computing (VNC)"
+    },
+    {
+      "port": "5900",
+      "name": "RFB/VNC Server",
+      "protocol": "TCP, UDP",
+      "description": "Virtual Network Computing (VNC) Remote Frame Buffer RFB protocol"
+    },
+    {
+      "port": "6000",
+      "name": "X11",
+      "protocol": "TCP",
+      "description": "X Window System protocol for delivering payloads between X clients and servers"
+    },
+    {
+      "port": "6001",
+      "name": "X11",
+      "protocol": "UDP",
+      "description": "X Window System protocol for delivering payloads between X clients and servers"
+    },
+    {
+      "port": "6379",
+      "name": "Redis",
+      "protocol": "TCP",
+      "description": "Popular non-relational database management system (NoSQL)"
+    },
+    {
+      "port": "6881",
+      "name": "BitTorrent",
+      "protocol": "TCP, UDP",
+      "description": "BitTorrent is part of the full range of ports used most often"
+    },
+    {
+      "port": "6999",
+      "name": "BitTorrent",
+      "protocol": "TCP, UDP",
+      "description": "BitTorrent is part of the full range of ports used most often"
+    },
+    {
+      "port": "6970",
+      "name": "Quicktime",
+      "protocol": "TCP, UDP",
+      "description": "QuickTime Streaming Server"
+    },
+    {
+      "port": "7000",
+      "name": "Cassandra",
+      "protocol": "TCP",
+      "description": "Inter-node communication within the cluster on Apache Cassandra"
+    },
+    {
+      "port": "7001",
+      "name": "Cassandra",
+      "protocol": "TCP",
+      "description": "SSL-enabled inter-node communication within the cluster on Apache Cassandra"
+    },
+    {
+      "port": "7199",
+      "name": "Cassandra JMX",
+      "protocol": "TCP",
+      "description": "Java Management Extensions on Apache Cassandra"
+    },
+    {
+      "port": "8080",
+      "name": "HTTP Proxy",
+      "protocol": "TCP",
+      "description": "Common web proxy server ports: 80, 8080, 3128, 6588"
+    },
+    {
+      "port": "8086",
+      "name": "Kaspersky AV",
+      "protocol": "TCP",
+      "description": "Kaspersky AV Control Center"
+    },
+    {
+      "port": "8087",
+      "name": "Kaspersky AV",
+      "protocol": "UDP",
+      "description": "Kaspersky AV Control Center"
+    },
+    {
+      "port": "8200",
+      "name": "VMware Server",
+      "protocol": "TCP, UDP",
+      "description": "VMware vSphere Fault Tolerance"
+    },
+    {
+      "port": "8222",
+      "name": "VMware Server",
+      "protocol": "TCP, UDP",
+      "description": "VMware Server Management User Interface (insecure Web interface)"
+    },
+    {
+      "port": "9100",
+      "name": "PDL",
+      "protocol": "TCP",
+      "description": "PDL Data Stream, used for printing to certain network printers"
+    },
+    {
+      "port": "9042",
+      "name": "Cassandra",
+      "protocol": "TCP",
+      "description": "Apache Cassandra, a NoSQL database"
+    },
+    {
+      "port": "9800",
+      "name": "WebDAV",
+      "protocol": "TCP, UDP",
+      "description": "Web-based Distributed Authoring and Versioning, an extension of HTTP"
+    },
+    {
+      "port": "10000",
+      "name": "BackupExec",
+      "protocol": "TCP, UDP",
+      "description": "Webmin, Web-based Unix/Linux system administration tool (default port)"
+    }
+  ]
+}

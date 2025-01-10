@@ -1,0 +1,105 @@
+{   
+    "$defs": {
+        "expressions": {
+            "eq": "=",
+            "neq": "!=",
+            "in": "in",
+            "nin": "not in"
+        }
+    },
+    "query": {
+        "source_ip": {
+            "field": "Source IP Address",
+            "expressions": {"$ref": "#/$defs/expressions"},
+            "value": { "parser": "_query_parser_value" }
+        },
+        "source_device_name": {
+            "field": "Source VM",
+            "expressions": {"$ref": "#/$defs/expressions"},
+            "value": { "parser": "_query_parser_value" }
+        },
+        "destination_device_name": {
+            "field": "Destination VM",
+            "expressions": {"$ref": "#/$defs/expressions"},
+            "value": { "parser": "_query_parser_value" }
+        },
+        "destination_ip": {
+            "field": "Destination IP Address",
+            "expressions": {"$ref": "#/$defs/expressions"},
+            "value": { "parser": "_query_parser_value" }
+        },
+        "firewall_rule_id": {
+            "field": "firewall_rule_id",
+            "expressions": {"$ref": "#/$defs/expressions"},
+            "value": { "parser": "_query_parser_value" }
+        },
+        "action": {
+            "field": "firewall action",
+            "expressions": {"$ref": "#/$defs/expressions"},
+            "value": { "parser": "_query_parser_value" }
+        },
+        "port": {
+            "field": "Port",
+            "expressions": {"$ref": "#/$defs/expressions"},
+            "value": { "parser": "_query_parser_value" }
+        },
+        "protocol": {
+            "field": "Protocol",
+            "expressions": {"$ref": "#/$defs/expressions"},
+            "value": { "parser": "_query_parser_value" }
+        }
+    },
+    "result": {
+        "timestamp": {
+            "_comment": "The API does not provide a 'timestamp' field directly. This field is derived from other attributes using the specified parser",
+            "field": "timestamp",
+            "parser": "_result_parser_timestamp"
+        },
+        "data_source": {
+            "_comment": "The API does not provide a 'data_source' field directly. This field is derived from other attributes using the specified parser",
+            "field": "data_source",
+            "parser": "_result_parser_data_source"
+        },
+        "log_source": {
+            "_comment": "The API does not provide a 'log_source' field directly. This field is derived from other attributes using the specified parser",
+            "field": "log_source",
+            "parser": "_result_parser_log_source"
+        },
+        "destination_ip.ip_address": {
+            "field": "destination_ip"
+        },
+        "source_ip.ip_address": {
+            "field": "source_ip"
+        },
+        "protocol": {
+            "field": "protocol"
+        },
+        "port.display": {
+            "field": "port"
+        },
+        "firewall_action": {
+            "field": "action"
+        },
+        "firewall_rule_id": {
+            "field": "firewall_rule_id"
+        },
+        "firewall_rule": {
+            "field": "firewall_rule",
+            "parser": "_result_parser_firewall_rule"
+        },
+        "source_vm": {
+            "field": "source_device",
+            "parser": "_result_parser_device"
+        },
+        "destination_vm": {
+            "field": "destination_device",
+            "parser": "_result_parser_device"
+        },
+        "manager": {
+            "field": "manager"
+        },
+        "port.iana_name": {
+            "field": "application"
+        }
+    }
+}

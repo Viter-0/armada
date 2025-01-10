@@ -1,0 +1,11 @@
+__pycache__
+.vscode/
+.venv/
+.idea/
+.env
+test/
+db.sqlite
+db.sqlite.bak
+dist/
+error.log
+test.py

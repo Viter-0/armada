@@ -1,0 +1,120 @@
+@tailwind base;
+
+/* Scrollbar Firefox */
+* {
+  scrollbar-width: thin;
+}
+
+/* Scrollbar Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 15px;
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 14px;
+  border: 3px solid;
+}
+
+@tailwind components;
+@tailwind utilities;
+
+:root:has(:is(.modal-open, .modal:target, .modal-toggle:checked + .modal, .modal[open])) {
+  scrollbar-gutter: unset;
+}
+
+/* Disable dropdown focus effects */
+:where(.menu li:not(.menu-title):not(.disabled) > :not(ul):not(details):not(.menu-title)):not(summary):not(.active).focus, :where(.menu li:not(.menu-title):not(.disabled) > :not(ul):not(details):not(.menu-title)):not(summary):not(.active):focus, :where(.menu li:not(.menu-title):not(.disabled) > :not(ul):not(details):not(.menu-title)):is(summary):not(.active):focus-visible, :where(.menu li:not(.menu-title):not(.disabled) > details > summary:not(.menu-title)):not(summary):not(.active).focus, :where(.menu li:not(.menu-title):not(.disabled) > details > summary:not(.menu-title)):not(summary):not(.active):focus, :where(.menu li:not(.menu-title):not(.disabled) > details > summary:not(.menu-title)):is(summary):not(.active):focus-visible {
+  background-color: unset;
+}
+
+/* Disable button animation */
+.btn.no-animation:active:hover, .btn.no-animation:active:focus {
+  transform: unset;
+}
+
+/* Element hover effects  */
+.hover\:bg-base-hover:hover {
+  background-color: var(--fallback-bc,oklch(var(--bc)/0.1));
+}
+
+/* Required form element */
+.form-required::after {
+  content: "*";
+  margin-left: .25rem;
+  color: #b72727;
+}
+
+/* Table resizer hover effects  */
+@media (hover: hover) {
+  .resizer:not(.hover) {
+    opacity: 0;
+  }
+
+  *:hover > .resizer {
+    opacity: 1;
+  }
+
+  .resizable:hover  .resizer {
+    opacity: 1;
+  }
+}
+
+/* DatePicker style  */
+.react-datepicker, .react-datepicker__header, .react-datepicker-time__header, .react-datepicker__time-container .react-datepicker__time {
+  background-color: var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)));
+  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+}
+.react-datepicker__day:not(.react-datepicker__day--in-selecting-range, .react-datepicker__day--selected, .react-datepicker__day--keyboard-selected), .react-datepicker__day-name, .react-datepicker__current-month {
+  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+}
+
+.react-datepicker__day:hover, .react-datepicker__day:not([aria-disabled="true"]):hover {
+  background-color: #216ba5;
+  color: white;
+}
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item:hover {
+  background-color: var(--fallback-bc,oklch(var(--bc)/0.1));
+}
+.react-datepicker__month--selecting-range .react-datepicker__day--in-range:not(.react-datepicker__day--in-selecting-range) {
+  background-color: var(--fallback-bc,oklch(var(--bc)/0.8));
+}
+
+/* Add border effect to search bar item */
+.border-search-item  {
+  border-color: var(--fallback-bc,oklch(var(--bc)/0.3));
+}
+
+/* Set border based on background color */
+.border-background {
+  border-color: var(--fallback-bc,oklch(var(--bc)/0.2));
+}
+
+/* ApexCharts style. The chart colors and styles are controlled using CSS variables. */
+.apexcharts-text {
+  fill: var(--fallback-bc,oklch(var(--bc)/1));
+}
+
+.apexcharts-canvas .apexcharts-tooltip.apexcharts-theme-light {
+  background: var(--fallback-bc,oklch(var(--b1)/0.9));
+  border: 1px solid  var(--fallback-bc,oklch(var(--bc)/0.4));
+}
+
+.apexcharts-canvas .apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-title {
+  background: var(--fallback-bc,oklch(var(--b1)/0.9));
+  border-bottom: 1px solid var(--fallback-bc,oklch(var(--bc)/0.4));
+}
+
+.apexcharts-tooltip-text, .apexcharts-legend-text {
+  color: var(--fallback-bc,oklch(var(--bc)/1)) !important;
+}
+
+.apexcharts-canvas .apexcharts-xaxistooltip {
+  background: var(--fallback-bc,oklch(var(--b1)/0.9));
+  color: var(--fallback-bc,oklch(var(--bc)/1));
+  border: 1px solid  var(--fallback-bc,oklch(var(--bc)/0.4));
+}

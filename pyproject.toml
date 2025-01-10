@@ -1,0 +1,94 @@
+[project]
+name = "armada-logs"
+version = "0.1.0"
+description = "Armada offers quick, detailed insights into network logs enriched with metadata information"
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    { name = "Viter", email = "viterr@proton.me" },
+]
+keywords = ["log-analysis", "vmware", "nsx", 'logging', 'network', "flows", 'firewall']
+dynamic = [ "classifiers" ]
+dependencies = [
+    "fastapi[standard] (>=0.115.6)", 
+    "sqlalchemy (>=2.0.36)", 
+    "alembic (>=1.14.0)", 
+    "bcrypt (>=4.2.1)", 
+    "aiosqlite (>=0.20.0)", 
+    "pydantic-settings (>=2.7.1)", 
+    "pydantic (>=2.10.5)", 
+    "fastapi-login (>=1.10.3)", 
+    "cryptography (>=44.0.0)", 
+    "taskiq (>=0.11.10)", 
+    "taskiq-redis (>=1.0.2)", 
+    "uvicorn (>=0.34.0)", 
+    "httpx (>=0.28.1)", 
+    "truststore (>=0.10.0)", 
+    "ldap3 (>=2.9.1)", 
+    "typer (>=0.15.1)", 
+    "pyyaml (>=6.0.2)", 
+    "asyncpg (>=0.30.0)"
+]
+
+[project.optional-dependencies]
+all = [ "faker (>=33.3.0,<34.0.0)" ]
+
+
+[project.urls]
+homepage = "https://github.com/Viter-0/armada"
+repository = "https://github.com/Viter-0/armada"
+"Bug Tracker" = "https://github.com/Viter-0/armada/issues"
+
+[project.scripts]
+armada = 'armada_logs.cli:cli'
+
+[tool.poetry]
+include = [
+    { path = "armada_logs/ui/**/*", format = ["wheel"] }
+]
+classifiers = [
+    "Intended Audience :: System Administrators",
+    "Topic :: Internet :: Log Analysis"
+]
+
+[tool.poetry.dependencies]
+python = ">=3.11,<4.0"
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+# Allow lines to be as long as 120.
+line-length = 120
+
+[tool.ruff.lint]
+select = [
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # flake8-bugbear
+    "B",
+    # pyupgrade
+    "UP",
+    # isort
+    "I",
+]
+
+ignore = [
+    # line too long
+    "E501",
+    # do not perform function calls in argument defaults
+    "B008",
+    # type hint typing.Optional
+    "UP007"
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"

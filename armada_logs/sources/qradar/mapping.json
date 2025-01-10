@@ -1,0 +1,79 @@
+{   
+    "$defs": {
+        "expressions": {
+            "eq": "=",
+            "neq": "<>",
+            "in": "IN",
+            "nin": "IN"
+        }
+    },
+    "query": {
+        "source_ip": {
+            "field": "sourceip",
+            "expressions": {"$ref": "#/$defs/expressions"},
+            "value": { "parser": "_query_parser_ip" },
+            "is_function": true
+        },
+        "destination_ip": {
+            "field": "destinationip",
+            "expressions": {"$ref": "#/$defs/expressions"},
+            "value": { "parser": "_query_parser_ip" },
+            "is_function": true
+        },
+        "port": {
+            "field": "destinationport",
+            "expressions": {"$ref": "#/$defs/expressions"},
+            "value": { "parser": "_query_parser_generic" }
+        },
+        "username": {
+            "field": "username",
+            "expressions": {"$ref": "#/$defs/expressions"},
+            "value": { "parser": "_query_parser_generic" }
+        }
+
+    },
+    "result": {
+        "startTime": {
+            "field": "timestamp",
+            "parser": "_result_parser_timestamp"
+        },
+        "destinationip": {
+            "field": "destination_ip"
+        },
+        "sourceip": {
+            "field": "source_ip"
+        },
+        "PROTO": {
+            "field": "protocol",
+             "parser": "_result_parser_protocol"
+        },
+        "destinationport": {
+            "field": "port",
+            "parser": "_result_parser_port"
+        },
+        "Action": {
+            "field": "action",
+            "parser": "_result_parser_action"
+        },
+        "logsource": {
+            "field": "log_source"
+        },
+        "username": {
+            "field": "username"
+        },
+        "session_message": {
+            "_comment": "The API does not provide a 'session_message' field directly. This field is derived from other attributes using the specified parser",
+            "field": "session_message",
+            "parser": "_result_parser_session_message"
+        },
+        "data_source": {
+            "_comment": "The API does not provide a 'data_source' field directly. This field is derived from other attributes using the specified parser",
+            "field": "data_source",
+            "parser": "_result_parser_data_source"
+        }
+    },
+    "select_fields": [
+        "startTime", "sourceip", "destinationip", "destinationport", "username" , "CATEGORYNAME(Category) as 'Action'", 
+        "PROTOCOLNAME(protocolid) as 'PROTO'", "LogSourceIdentifier  as logsource", "LOGSOURCETYPENAME(deviceType) as logstype"
+    ]
+}

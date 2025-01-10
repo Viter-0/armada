@@ -1,0 +1,43 @@
+version: 1
+formatters:
+  default:
+    format: "%(asctime)s [%(levelname)s] [%(name)s] %(message)s"
+handlers:
+  file:
+    formatter: default
+    class: logging.handlers.RotatingFileHandler
+    filename: 'error.log'
+    level: WARNING
+    maxBytes: 10485760  # 10MB
+    backupCount: 0
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: default
+    stream: ext://sys.stdout
+loggers:
+  armada:
+    level: INFO
+    handlers: [console, file]
+    propagate: no
+  armada.search:
+    level: WARN
+    handlers: [console, file]
+    propagate: no
+  armada.source:
+    level: WARN
+    handlers: [console, file]
+    propagate: no
+  alembic:
+    level: INFO
+    handlers: [console, file]
+    propagate: no
+    qualname: alembic
+  sqlalchemy:
+    level: WARN
+    handlers: [console, file]
+    propagate: no
+    qualname: sqlalchemy.engine
+root:
+  level: WARN
+  handlers: [console]
