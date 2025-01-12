@@ -1,7 +1,7 @@
 import { useOutsideAction } from "@/util/hooks";
 import { twClassJoin, twClassMerge } from "@/util/twMerge";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
-import { createContext, useContext, useRef, useState } from "react";
+import { createContext, useCallback, useContext, useRef, useState } from "react";
 
 export interface DropdownProps extends React.ComponentPropsWithoutRef<"details"> {
   children: React.ReactNode;
@@ -23,26 +23,29 @@ export function Dropdown({ children, className = "", isDismissible = true, ...pr
   const dropdownRef = useRef<null | HTMLDetailsElement>(null);
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleDropdown = () => {
+  const openDropdown = useCallback(() => {
+    if (dropdownRef.current) dropdownRef.current.setAttribute("open", "");
+    setIsOpen(true);
+  }, []);
+  const closeDropdown = useCallback(() => {
+    if (dropdownRef.current) dropdownRef.current.removeAttribute("open");
+    setIsOpen(false);
+  }, []);
+
+  const toggleDropdown = useCallback(() => {
     if (isOpen) {
       closeDropdown();
     } else {
       openDropdown();
     }
-  };
+  }, [isOpen, closeDropdown, openDropdown]);
 
-  const openDropdown = () => {
-    if (dropdownRef.current) dropdownRef.current.setAttribute("open", "");
-    setIsOpen(true);
-  };
-  const closeDropdown = () => {
-    if (dropdownRef.current) dropdownRef.current.removeAttribute("open");
-    setIsOpen(false);
-  };
-
-  const dismissDropdown = (_: Event) => {
-    if (isDismissible) closeDropdown();
-  };
+  const dismissDropdown = useCallback(
+    (_: Event) => {
+      if (isDismissible) closeDropdown();
+    },
+    [isDismissible, closeDropdown]
+  );
 
   useOutsideAction("click", dropdownRef, dismissDropdown);
 

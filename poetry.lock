@@ -1813,4 +1813,4 @@ all = ["faker"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "9b0a414fe0103fe167f02f5d93cdaba619622fc3369a7b4eeebdadf1926f10ba"
+content-hash = "c1b88904c23e243c96c6980980764c049c74e39a4563e372e0e47f560dced9c7"

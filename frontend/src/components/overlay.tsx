@@ -129,9 +129,7 @@ export function DrawerSide({ children, className = "", isOverlayVisible = true }
 
   return (
     <div className={"drawer-side " + className}>
-      {isOverlayVisible && (
-        <label aria-label="close sidebar" onClick={() => drawerContext.toggle()} className="drawer-overlay"></label>
-      )}
+      {isOverlayVisible && <a onClick={() => drawerContext.toggle()} className="drawer-overlay"></a>}
       {children}
     </div>
   );

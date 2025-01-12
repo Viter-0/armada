@@ -1,6 +1,6 @@
 import { paths } from "@/api/schema";
 import { EventsEnum } from "@/config/const";
-import axios, { AxiosRequestConfig } from "axios";
+import axios, { AxiosError, AxiosRequestConfig, isAxiosError } from "axios";
 
 type AccessToken = paths["/api/auth/token"]["post"]["responses"]["200"]["content"]["application/json"];
 
@@ -42,13 +42,15 @@ api.interceptors.response.use(
   (response) => {
     return response;
   },
-  async function (error) {
-    const originalRequest = error.config;
-    if (error.response.status == 401 && originalRequest.refreshAccessToken != false) {
+  async function (error: AxiosError | Error) {
+    if (!isAxiosError(error)) return Promise.reject(error);
+
+    const originalRequest = error.config as CustomAxiosRequestConfig;
+    if (error.response?.status == 401 && originalRequest.refreshAccessToken != false) {
       originalRequest.refreshAccessToken = false;
       const access_token = await refreshAccessToken();
       if (!access_token) return Promise.reject(error);
-      originalRequest.headers.Authorization = "Bearer " + access_token;
+      if (originalRequest.headers) originalRequest.headers.Authorization = "Bearer " + access_token;
       return api(originalRequest);
     }
     return Promise.reject(error);

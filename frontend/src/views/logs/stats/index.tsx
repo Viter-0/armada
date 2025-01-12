@@ -132,7 +132,7 @@ export function SearchStatistics({ errors, meta, isSuccess }: SearchStatisticsPr
     [errors, meta]
   );
   const [activeTab, setActiveTab] = useState(tabs[0].key);
-  const type: StatusIndicatorProps["type"] = isSuccess ? (errors?.length ?? 0 > 0 ? "warning" : "success") : "error";
+  const type: StatusIndicatorProps["type"] = isSuccess ? ((errors?.length ?? 0) > 0 ? "warning" : "success") : "error";
   const isDisabled = !errors && !meta;
 
   return (

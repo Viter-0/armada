@@ -135,6 +135,7 @@ class ApplicationSettings(BaseEnvSettings):
             with open(ENV_FILE, encoding=ENCODING) as file:
                 lines = file.readlines()
         else:
+            # Create new file
             with open(ENV_FILE, "a", encoding=ENCODING):
                 pass
             lines = []

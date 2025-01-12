@@ -1102,13 +1102,10 @@ export function SearchQueryBuilder({
       switch (state.activeCursorPosition) {
         case "field":
           return applyFieldSuggestion(searchFilter, suggestion);
-          break;
         case "expression":
           return applyExpressionSuggestion(searchFilter, suggestion);
-          break;
         case "value":
           return applyValueSuggestion(searchFilter, suggestion);
-          break;
       }
     },
     [state.activeCursorPosition, applyValueSuggestion, applyExpressionSuggestion, applyFieldSuggestion]

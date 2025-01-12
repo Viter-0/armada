@@ -1,5 +1,5 @@
 from typing import Annotated
-from uuid import UUID, uuid4
+from uuid import UUID
 
 from fastapi import APIRouter, Body, Depends, HTTPException, Path, Security, status
 from sqlalchemy import select
@@ -9,7 +9,6 @@ from armada_logs import models, schema
 from armada_logs.const import DataSourceTypesEnum, ScopesEnum
 from armada_logs.core.security import access_manager
 from armada_logs.database import get_db_session, update_database_entry
-from armada_logs.registry import DataSourceFactory
 from armada_logs.util.errors import ValidationException
 
 router = APIRouter(prefix="/data_sources")
@@ -130,29 +129,13 @@ async def validate_aria_logs(
     2. Only config - Check if the source you are trying to create is valid.
     """
 
-    if not item_id and not config:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="id or config is required")
-
-    if item_id:
-        db_data_source = await db_session.get_one(schema.data_sources.ORMDataSource, item_id)
-        data_source = DataSourceFactory.from_config(config=db_data_source)
-        await models.data_sources.check_connectivity(data_source)
-
-    if config:
-        credential_profile = await models.data_sources.get_credential_profile_by_id(
-            session=db_session, credential_profile_id=config.credential_profile_id
-        )
-
-        data_source = DataSourceFactory.from_config(
-            # DataSourceFactory needs a config with all ORM attributes
-            config=schema.data_sources.DataSourceAriaLogs(
-                **config.model_dump(),
-                id=uuid4(),
-                entity_type=DataSourceTypesEnum.ARIA_LOGS.value,
-                credential_profile=schema.data_sources.CredentialProfile.model_validate(credential_profile),
-            ),
-        )
-        await models.data_sources.check_connectivity(data_source)
+    await models.data_sources.validate_data_source(
+        db_session=db_session,
+        item_id=item_id,
+        config=config,
+        source_schema=schema.data_sources.DataSourceAriaLogs,
+        source_type=DataSourceTypesEnum.ARIA_LOGS,
+    )
 
 
 @router.get(path="/aria_networks", response_model=list[schema.data_sources.DataSourceAriaNetworksResponse])
@@ -237,28 +220,13 @@ async def validate_aria_networks(
     2. Only config - Check if the source you are trying to create is valid.
     """
 
-    if not item_id and not config:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="id or config is required")
-
-    if item_id:
-        db_data_source = await db_session.get_one(schema.data_sources.ORMDataSource, item_id)
-        data_source = DataSourceFactory.from_config(config=db_data_source)
-        await models.data_sources.check_connectivity(data_source)
-
-    if config:
-        credential_profile = await models.data_sources.get_credential_profile_by_id(
-            session=db_session, credential_profile_id=config.credential_profile_id
-        )
-        data_source = DataSourceFactory.from_config(
-            # DataSourceFactory needs a config with all ORM attributes
-            config=schema.data_sources.DataSourceAriaNetworks(
-                **config.model_dump(),
-                id=uuid4(),
-                entity_type=DataSourceTypesEnum.ARIA_NETWORKS.value,
-                credential_profile=schema.data_sources.CredentialProfile.model_validate(credential_profile),
-            ),
-        )
-        await models.data_sources.check_connectivity(data_source)
+    await models.data_sources.validate_data_source(
+        db_session=db_session,
+        item_id=item_id,
+        config=config,
+        source_schema=schema.data_sources.DataSourceAriaNetworks,
+        source_type=DataSourceTypesEnum.ARIA_NETWORKS,
+    )
 
 
 @router.get(path="/vmware_nsx", response_model=list[schema.data_sources.DataSourceVmwareNSXResponse])
@@ -343,29 +311,13 @@ async def validate_vmware_nsx(
     2. Only config - Check if the source you are trying to create is valid.
     """
 
-    if not item_id and not config:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="id or config is required")
-
-    if item_id:
-        db_data_source = await db_session.get_one(schema.data_sources.ORMDataSource, item_id)
-        data_source = DataSourceFactory.from_config(config=db_data_source)
-        await models.data_sources.check_connectivity(data_source)
-
-    if config:
-        credential_profile = await models.data_sources.get_credential_profile_by_id(
-            session=db_session, credential_profile_id=config.credential_profile_id
-        )
-
-        data_source = DataSourceFactory.from_config(
-            # DataSourceFactory needs a config with all ORM attributes
-            config=schema.data_sources.DataSourceVmwareNSX(
-                **config.model_dump(),
-                id=uuid4(),
-                entity_type=DataSourceTypesEnum.VMWARE_NSX.value,
-                credential_profile=schema.data_sources.CredentialProfile.model_validate(credential_profile),
-            ),
-        )
-        await models.data_sources.check_connectivity(data_source)
+    await models.data_sources.validate_data_source(
+        db_session=db_session,
+        item_id=item_id,
+        config=config,
+        source_schema=schema.data_sources.DataSourceVmwareNSX,
+        source_type=DataSourceTypesEnum.VMWARE_NSX,
+    )
 
 
 @router.get(path="/vmware_vcenter", response_model=list[schema.data_sources.DataSourceVmwareVCenterResponse])
@@ -450,29 +402,13 @@ async def validate_vmware_vcenter(
     2. Only config - Check if the source you are trying to create is valid.
     """
 
-    if not item_id and not config:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="id or config is required")
-
-    if item_id:
-        db_data_source = await db_session.get_one(schema.data_sources.ORMDataSource, item_id)
-        data_source = DataSourceFactory.from_config(config=db_data_source)
-        await models.data_sources.check_connectivity(data_source)
-
-    if config:
-        credential_profile = await models.data_sources.get_credential_profile_by_id(
-            session=db_session, credential_profile_id=config.credential_profile_id
-        )
-
-        data_source = DataSourceFactory.from_config(
-            # DataSourceFactory needs a config with all ORM attributes
-            config=schema.data_sources.DataSourceVmwareVCenter(
-                **config.model_dump(),
-                id=uuid4(),
-                entity_type=DataSourceTypesEnum.VMWARE_VCENTER.value,
-                credential_profile=schema.data_sources.CredentialProfile.model_validate(credential_profile),
-            ),
-        )
-        await models.data_sources.check_connectivity(data_source)
+    await models.data_sources.validate_data_source(
+        db_session=db_session,
+        item_id=item_id,
+        config=config,
+        source_schema=schema.data_sources.DataSourceVmwareVCenter,
+        source_type=DataSourceTypesEnum.VMWARE_VCENTER,
+    )
 
 
 @router.get(path="/demo/{id}", response_model=schema.data_sources.DataSourceDemoResponse)
@@ -569,29 +505,13 @@ async def validate_ivanti_itsm(
     2. Only config - Check if the source you are trying to create is valid.
     """
 
-    if not item_id and not config:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="id or config is required")
-
-    if item_id:
-        db_data_source = await db_session.get_one(schema.data_sources.ORMDataSource, item_id)
-        data_source = DataSourceFactory.from_config(config=db_data_source)
-        await models.data_sources.check_connectivity(data_source)
-
-    if config:
-        credential_profile = await models.data_sources.get_credential_profile_by_id(
-            session=db_session, credential_profile_id=config.credential_profile_id
-        )
-
-        data_source = DataSourceFactory.from_config(
-            # DataSourceFactory needs a config with all ORM attributes
-            config=schema.data_sources.DataSourceIvantiITSM(
-                **config.model_dump(),
-                id=uuid4(),
-                entity_type=DataSourceTypesEnum.IVANTI_ITSM.value,
-                credential_profile=schema.data_sources.CredentialProfile.model_validate(credential_profile),
-            ),
-        )
-        await models.data_sources.check_connectivity(data_source)
+    await models.data_sources.validate_data_source(
+        db_session=db_session,
+        item_id=item_id,
+        config=config,
+        source_schema=schema.data_sources.DataSourceIvantiITSM,
+        source_type=DataSourceTypesEnum.IVANTI_ITSM,
+    )
 
 
 @router.get(path="/qradar", response_model=list[schema.data_sources.DataSourceQRadarResponse])
@@ -676,26 +596,10 @@ async def validate_qradar(
     2. Only config - Check if the source you are trying to create is valid.
     """
 
-    if not item_id and not config:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="id or config is required")
-
-    if item_id:
-        db_data_source = await db_session.get_one(schema.data_sources.ORMDataSource, item_id)
-        data_source = DataSourceFactory.from_config(config=db_data_source)
-        await models.data_sources.check_connectivity(data_source)
-
-    if config:
-        credential_profile = await models.data_sources.get_credential_profile_by_id(
-            session=db_session, credential_profile_id=config.credential_profile_id
-        )
-
-        data_source = DataSourceFactory.from_config(
-            # DataSourceFactory needs a config with all ORM attributes
-            config=schema.data_sources.DataSourceQRadar(
-                **config.model_dump(),
-                id=uuid4(),
-                entity_type=DataSourceTypesEnum.QRADAR.value,
-                credential_profile=schema.data_sources.CredentialProfile.model_validate(credential_profile),
-            ),
-        )
-        await models.data_sources.check_connectivity(data_source)
+    await models.data_sources.validate_data_source(
+        db_session=db_session,
+        item_id=item_id,
+        config=config,
+        source_schema=schema.data_sources.DataSourceQRadar,
+        source_type=DataSourceTypesEnum.QRADAR,
+    )

@@ -99,7 +99,7 @@ def run_migrations():
         return
 
     if not app_settings.RUN_DATABASE_MIGRATIONS:
-        raise Exception(
+        raise RuntimeError(
             "Automatic database upgrade is disabled. Please run the database migration manually using the CLI command - `armada database upgrade`"
         )
 

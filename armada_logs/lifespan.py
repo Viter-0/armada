@@ -13,6 +13,9 @@ from .registry import TasksRegistry
 
 
 async def on_server_init(app: FastAPI):
+    """
+    Tasks to run during the server startup process.
+    """
     TasksRegistry.import_app_task_modules()
     await DataSourceRunner.start()
     async with get_db_session_context() as db_session:
@@ -20,6 +23,9 @@ async def on_server_init(app: FastAPI):
 
 
 async def on_server_shutdown(app: FastAPI):
+    """
+    Tasks to run during the server shutdown process.
+    """
     pass
 
 

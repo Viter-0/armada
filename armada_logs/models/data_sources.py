@@ -1,12 +1,14 @@
 from typing import TYPE_CHECKING
-from uuid import UUID
+from uuid import UUID, uuid4
 
 from fastapi import HTTPException, status
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from armada_logs import schema
+from armada_logs.const import DataSourceTypesEnum
 from armada_logs.logging import logger
+from armada_logs.registry import DataSourceFactory
 from armada_logs.sources.runner import DataSourceRunner
 from armada_logs.util.parsers import parse_exception_message
 
@@ -110,3 +112,45 @@ async def get_credential_profile_by_id(session: AsyncSession, credential_profile
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Credential profile ID is missing")
 
     return await session.get_one(schema.data_sources.ORMCredentialProfile, credential_profile_id)
+
+
+async def validate_data_source(
+    db_session: AsyncSession,
+    item_id: UUID | None,
+    config: schema.data_sources.DataSourceCreate | None,
+    source_schema: type[schema.data_sources.DataSource],
+    source_type: DataSourceTypesEnum,
+):
+    """
+    Check if data source is functional.
+
+    There are two options to validate a data source:
+    1. Only ID - Check if the source in the database is valid.
+    2. Only config - Check if the source you are trying to create is valid.
+
+    Raises:
+        HTTPException: If the connectivity check fails or invalid configuration.
+    """
+    if not item_id and not config:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="id or config is required")
+
+    if item_id:
+        db_data_source = await db_session.get_one(schema.data_sources.ORMDataSource, item_id)
+        data_source = DataSourceFactory.from_config(config=db_data_source)
+        await check_connectivity(data_source)
+
+    if config:
+        credential_profile = await get_credential_profile_by_id(
+            session=db_session, credential_profile_id=config.credential_profile_id
+        )
+
+        data_source = DataSourceFactory.from_config(
+            # DataSourceFactory needs a config with all ORM attributes
+            config=source_schema(
+                **config.model_dump(),
+                id=uuid4(),
+                entity_type=source_type.value,
+                credential_profile=schema.data_sources.CredentialProfile.model_validate(credential_profile),
+            ),
+        )
+        await check_connectivity(data_source)

@@ -1,7 +1,7 @@
 [project]
 name = "armada-logs"
 version = "0.1.0"
-description = "Armada offers quick, detailed insights into network logs enriched with metadata information"
+description = "Armada provides quick and detailed insights into network flows enriched with metadata"
 license = { text = "MIT" }
 readme = "README.md"
 requires-python = ">=3.11"

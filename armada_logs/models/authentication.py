@@ -293,7 +293,7 @@ class AuthServerLdap(AuthServerBase):
             auto_bind=True,
             password=self.config.password,
         ) as connection:
-            user = await self._find_user(connection=connection, email=new_user.email)
+            await self._find_user(connection=connection, email=new_user.email)
 
         user = schema.users.ORMUser(
             email=new_user.email,

@@ -1,12 +1,15 @@
 # Armada
 
-Armada is a lightweight tool designed for centralized network log viewing across multiple data sources. Armada offers quick, detailed insights into network flows enriched with metadata information.
+[![PyPI - Version](https://img.shields.io/pypi/v/armada-logs?label=pypi%20package&color=blue)](https://github.com/Viter-0/armada)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/armada-logs?color=blue)](https://github.com/Viter-0/armada)
+
+Armada is a lightweight tool designed for centralized network log viewing across multiple data sources. It provides quick and detailed insights into network flows enriched with metadata.
 
 Originally created to analyze VMware NSX logs, its broader goal is to become a versatile tool for general network log analysis.
 
 ## Features
 
-- Simple setup process. There is no need for complex configurations or additional servers.;
+- Simple setup process. There is no need for complex configurations or additional servers;
 - Search query suggestions and autocompletion;
 - Log correlation with relevant asset data;
 - Current Data Source Support:
@@ -15,11 +18,13 @@ Originally created to analyze VMware NSX logs, its broader goal is to become a v
   - Ivanti Neurons (HEAT) for ITSM
   - IBM QRadar
 
+## Screenshots
+
 ## Demo Access
 
-You can explore Armada by accessing our demo environment
+You can explore Armada by accessing our demo environment. Please wait for the demo environment to start.
 
-URL: <https://github.com/Viter-0/armada>
+URL: [Demo](https://armada-pida.onrender.com/)
 
 Login Credentials:
 
@@ -67,4 +72,4 @@ New Features
 
 ## Contributing
 
-Armada thrives on community collaboration. If you want to suggest features, report bugs, or contribute code, don't hesitate to reach out or create an issue.
+If you want to suggest features, report bugs, or contribute code, don't hesitate to reach out or create an issue.
