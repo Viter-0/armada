@@ -20,6 +20,8 @@ Originally created to analyze VMware NSX logs, its broader goal is to become a v
 
 ## Screenshots
 
+https://github.com/user-attachments/assets/c4bc8284-9b1c-492d-85e6-3a43118c3ac4
+
 ## Demo Access
 
 You can explore Armada by accessing our demo environment. Please wait for the demo environment to start.
